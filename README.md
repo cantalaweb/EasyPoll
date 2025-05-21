@@ -1,9 +1,9 @@
 <!-- Title -->
-<h1 align='center'> Lorem ipsum </h1>
+<h1 align='center'> EasyPoll </h1>
 
 
 <!-- tag line -->
-<h3 align='center'> Lorem ipsum dolor sit amet, consectetur adipiscing elit </h3>
+<h3 align='center'> A simple polling system for the classroom. </h3>
 
 <!-- tech stack badges ---------------------------------- -->
 <p align='center'>
@@ -11,8 +11,9 @@
   <a href='https://expressjs.com'>
     <img src='https://img.shields.io/badge/express-black?style=flat&logo=express' />
   </a>
-  <a href='https://sequelize.org'>
-    <img src='https://img.shields.io/badge/sequelize-black?style=flat&logo=sequelize&logoColor=%2352B0E7' />
+  <img src='https://img.shields.io/badge/mongoDB-black?logo=mongodb' />
+  <a href='https://mongoosejs.com'>
+    <img src='https://img.shields.io/badge/mongoose-black?logo=mongoose' />
   </a>
 </p>
 <br/>
