@@ -8,6 +8,7 @@ const { dbConnection } = require("./db")
 
 // ROUTES
 // const ingredientsRoutes = require("./routes/ingredients.routes")
+const questionsRoutes = require("./routes/questions.routes")
 
 const main = () => {
   const app = express();
@@ -16,6 +17,7 @@ const main = () => {
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   // ENDPOINTS
   // app.use("/ingredients", ingredientsRoutes)
+  app.use("/questions", questionsRoutes)
 
   dbConnection()
 
