@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 
 const pollSchema = new Schema({
     polls: [
+        questionId: {type: ObjectId, required: true},
         date: { type: Date, default: Date.now },
         users: [
             userName: {type: String, required: true},
