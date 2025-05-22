@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { getResults } = require("../controllers/result.controller");
+const { getResults } = require("../controllers/results.controller");
 
 router.get("/:pollId", getResults);
 
