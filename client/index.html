@@ -8,17 +8,18 @@
 </head>
 <body>
 <h1>Bienvenido a EASYPOLL</h1>
-<input type="text" class="pollTitle" placeholder="Aqui tu pregunta para la clase">
+<input type="text" id="questionText" class="pollTitle" placeholder="Aqui tu pregunta para la clase">
+<input type="number" id="minsToVoteText" class="minsToVote" placeholder="2">
 <ul class="mainContainer">
-    <input type="text" placeholder="Opcion 1">
-    <input type="text" placeholder="Opcion 2">
-    <input type="text" placeholder="Opcion 3">
-    <input type="text" placeholder="Opcion 4">
+    <input type="text" id="option_1" placeholder="Opcion 1">
+    <input type="text" id="option_2" placeholder="Opcion 2">
+    <input type="text" id="option_3" placeholder="Opcion 3">
+    <input type="text" id="option_4" placeholder="Opcion 4">
 </ul> 
 <div class="secondContainer">
-    <button class="createPoll">CREAR VOTACIÓN</button>
-    <button class="resultsPoll">RESULTADOS VOTACIÓN</button>
-    <button class="recoverPoll">RECUPERAR VOTACIÓN</button>
+    <button id="createPollBtn" class="createPoll">CREAR VOTACIÓN</button>
+    <button id="resultsPollBtn" class="resultsPoll">RESULTADOS VOTACIÓN</button>
+    <button id="recoverPollBtn" class="recoverPoll">RECUPERAR VOTACIÓN</button>
 </div>
     <script src="./script.js"></script>
 </body>
