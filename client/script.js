@@ -1,16 +1,16 @@
 // Get DOM elements
-const questionText = document.getElementById('questionText');
-const minsToVoteText = document.getElementById('minsToVoteText');
-const option1 = document.getElementById('option_1');
-const option2 = document.getElementById('option_2');
-const option3 = document.getElementById('option_3');
-const option4 = document.getElementById('option_4');
-const createPollBtn = document.getElementById('createPollBtn');
 const BASEURL = 'http://127.0.0.1:8000'
+const createPollBtn = document.getElementById('createPollBtn');
 
 createPollBtn.addEventListener('click', createPoll)
 
 const createPoll = async () => {
+    const questionText = document.getElementById('questionText');
+    const minsToVoteText = document.getElementById('minsToVoteText');
+    const option1 = document.getElementById('option_1');
+    const option2 = document.getElementById('option_2');
+    const option3 = document.getElementById('option_3');
+    const option4 = document.getElementById('option_4');
     const response = await fetch(BASEURL + "/questions", {
         headers: {
             "Content-Type": "application/json"
@@ -18,7 +18,7 @@ const createPoll = async () => {
         method: "POST",
         body: JSON.stringify({
             question: questionText.value,
-            minsToVote: Number(minsToVoteText.value)
+            minsToVote: Number(minsToVoteText.value),
             options: [
                 option1.value,
                 option2.value,

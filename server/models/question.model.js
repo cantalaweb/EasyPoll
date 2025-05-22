@@ -2,14 +2,10 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const questionSchema = new Schema({
+    _id: Schema.Types.ObjectId,
     question: { type: String, required: true },
     minsToVote: { type: Number, default: 2 },
-    options: [
-        {
-            text: { type: String, required: true },
-        },
-    ],
-    createdAt: { type: Date },
+    options: [{ type: String, required: true }]
 });
 
 const Question = mongoose.model("Question", questionSchema);

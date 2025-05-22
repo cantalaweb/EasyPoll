@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const { createPoll , getPolls , updatePolls} = require("../controllers/polls.controller");
+const { createPoll , getPoll , updatePoll} = require("../controllers/polls.controller");
 
 router.post("/:questionId", createPoll);
-router.get("/:pollId", getPolls);
-router.put("/:pollId", updatePolls);
+router.get("/:pollId", getPoll);
+router.put("/:pollId", updatePoll);
 
 module.exports = router;

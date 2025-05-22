@@ -1,26 +1,23 @@
 //A MODIFICAR TODO
 
-const { Question } = require("../models/question.model");
+const { Poll } = require("../models/poll.model");
 
-const createQuestion = async (req, res) => {
-    const question = req.body.question;
-    const minsToVote = req.body.minsToVote;
-    const options = req.body.options;
-    const createdAt = Date.now;
+const createPoll = async (req, res) => {
+    const questionId = req.params.questionId;
+    const dateNow = Date.now;
     try {
-        const createdQuestion = new Question({
-            question: question,
-            minsToVote: minsToVote,
-            options: options,
-            createdAt: createdAt,
+        const createdPoll = new Poll({
+            questionId: questionId,
+            date: dateNow
         });
-        await createdQuestion.save();
-        res.status(201).send("Question registered.");
+        await createdPoll.save();
+        res.status(201).send("Poll registered.");
     } catch (error) {
         res.status(404).send(error);
     }
 };
-const getQuestion = async (req, res) => {
+
+const getPoll = async (req, res) => {
     const word = req.params.word;
     const historialdepreguntas = "";
     try {
@@ -41,4 +38,26 @@ const getQuestion = async (req, res) => {
     }
 };
 
-module.exports = { getQuestion , createQuestion };
+const updatePoll = async (req, res) => {
+    const word = req.params.word;
+    const historialdepreguntas = "";
+    try {
+        const questions = await Question.findAll({});
+        questions.forEach((element) => {
+            if (element.question.includes(word)) {
+                historialdepreguntas =
+                    historialdepreguntas +
+                    `<h3>${element.question}</h3><button>Seleccionar pregunta</button><br>`;
+            }
+            res.send(200);
+        });
+        if (Votes.question.includes(word)) {
+            res.status(200).send(Votes.question);
+        }
+    } catch (error) {
+        res.status(404).send(error);
+    }
+};
+
+ 
+module.exports = { createPoll, getPoll, updatePoll };

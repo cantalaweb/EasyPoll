@@ -6,13 +6,12 @@ const createQuestion = async (req, res) => {
     const question = req.body.question;
     const minsToVote = req.body.minsToVote;
     const options = req.body.options;
-    const createdAt = Date.now;
     try {
         const createdQuestion = new Question({
+            _id: new mongoose.Types.ObjectId(),
             question: question,
             minsToVote: minsToVote,
-            options: options,
-            createdAt: createdAt,
+            options: options
         });
         await createdQuestion.save();
         res.status(201).send("Question registered.");
@@ -20,7 +19,7 @@ const createQuestion = async (req, res) => {
         res.status(404).send(error);
     }
 };
-const getQuestion = async (req, res) => {
+const getQuestions = async (req, res) => {
     const word = req.params.word;
     const historialdepreguntas = "";
     try {
@@ -39,4 +38,4 @@ const getQuestion = async (req, res) => {
     }
 };
 
-module.exports = { getQuestion , createQuestion };
+module.exports = { getQuestions , createQuestion };
