@@ -41,5 +41,4 @@ const getQuestion = async (req, res) => {
     }
 };
 
-module.exports = { getQuestion };
-module.exports = { createQuestion };
+module.exports = { getQuestion , createQuestion };

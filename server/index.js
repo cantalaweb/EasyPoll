@@ -1,9 +1,9 @@
-const port = 8000;
+const port = 3000;
 
 const cors = require("cors");
 const express = require("express");
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger-output.json');
+//const swaggerUi = require('swagger-ui-express');
+//const swaggerDocument = require('./swagger-output.json');
 const { dbConnection } = require("./db")
 
 // ROUTES
@@ -15,7 +15,7 @@ const main = () => {
   const app = express();
   app.use(cors());
   app.use(express.json());
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  //app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   // ENDPOINTS
   app.use("/questions", questionsRoutes)
   app.use("/polls", pollsRoutes)

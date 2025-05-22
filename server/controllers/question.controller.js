@@ -31,12 +31,12 @@ const getQuestion = async (req, res) => {
                     historialdepreguntas +
                     `<h3>${element.question}</h3><button onclick=${router.get("/:"+element._id, getResults)}>Seleccionar pregunta</button><br>`;
             }
-            res.send(200);
         });
+        document.getElementById("historial").innerHTML = historialdepreguntas
+        res.status (200)
     } catch (error) {
         res.status(404).send(error);
     }
 };
 
-module.exports = { getQuestion };
-module.exports = { createQuestion };
+module.exports = { getQuestion , createQuestion };

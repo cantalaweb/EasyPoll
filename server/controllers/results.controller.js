@@ -1,5 +1,4 @@
 const { Question } = require("../models/question.model");
-const { Results } = require("../models/results.model");
 /* Tal como esta hecha el modelo resuls no sería necesario, sería necesario si por ejemplo se quisiera comprobar si
 un usuario ha votado*/
 
