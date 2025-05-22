@@ -4,11 +4,11 @@ const { Results } = require("../models/results.model");
 un usuario ha votado*/
 
 const getResults = async (req, res) => {
-    const question = req.body.question;
+    const idQuestion = req.body._id;
 
     const resultados = [];
     try {
-        const results = await Question.findOne({ question: question });
+        const results = await Question.find({ _id: idQuestion });
         const options = results[0].options;
         for (let i = 0; i < options.length; i++) {
             let a = 0;

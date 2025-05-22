@@ -1,4 +1,6 @@
 const { Question } = require("../models/question.model");
+const express = require("express");
+const router = express.Router();
 
 const createQuestion = async (req, res) => {
     const question = req.body.question;
@@ -27,7 +29,7 @@ const getQuestion = async (req, res) => {
             if (element.question.includes(word)) {
                 historialdepreguntas =
                     historialdepreguntas +
-                    `<h3>${element.question}</h3><button>Seleccionar pregunta</button><br>`;
+                    `<h3>${element.question}</h3><button onclick=${router.get("/:"+element._id, getResults)}>Seleccionar pregunta</button><br>`;
             }
             res.send(200);
         });
