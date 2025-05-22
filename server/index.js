@@ -7,8 +7,9 @@ const swaggerDocument = require('./swagger-output.json');
 const { dbConnection } = require("./db")
 
 // ROUTES
-// const ingredientsRoutes = require("./routes/ingredients.routes")
 const questionsRoutes = require("./routes/questions.routes")
+const pollsRoutes = require("./routes/polls.routes")
+const resultsRoutes = require("./routes/results.routes")
 
 const main = () => {
   const app = express();
@@ -16,8 +17,9 @@ const main = () => {
   app.use(express.json());
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   // ENDPOINTS
-  // app.use("/ingredients", ingredientsRoutes)
   app.use("/questions", questionsRoutes)
+  app.use("/polls", pollsRoutes)
+  app.use("/results", resultsRoutes)
 
   dbConnection()
 
