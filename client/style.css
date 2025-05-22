@@ -1,0 +1,27 @@
+.pollTitle {
+    width:98% ;
+    flex-wrap: wrap;
+}
+.createPoll {
+    height:30px ;
+    width: 300px;
+}
+.recoverPoll {
+    height:30px ;
+    width: 300px;
+}
+.resultsPoll {
+    height:30px ;
+    width: 300px;
+}
+.mainContainer{
+    display:flex;
+    flex-direction: column;
+}
+
+.secondContainer{
+    display: flex;
+    flex-direction:row ;
+    justify-content: center;
+    gap: 30px;
+}
