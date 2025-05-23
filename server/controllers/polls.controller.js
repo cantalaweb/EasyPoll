@@ -36,6 +36,10 @@ const getPoll = async (req, res) => {
         })
         array_options.slice(0, -1) // para quitar la última coma
         array_options += ']'
+
+        // Set how many minutes to subtract
+        const countdownMinutes = poll.question.minsToVote
+
         let html = `
             <!DOCTYPE html>
             <html lang="en">
@@ -59,7 +63,8 @@ const getPoll = async (req, res) => {
                 <br/>
                 <div class="container" id="options">
                 </div>
-                
+                <div class="container" id="timer">
+                </div>
             </body>
             <script>
                 let userIP = ''
@@ -121,7 +126,7 @@ const getPoll = async (req, res) => {
                             // Styling
                             button.style.margin = '5px';
                             button.classList.add('btn');
-                            
+                            button.id = option
                             container.appendChild(button);
                         }
                     })
@@ -129,10 +134,37 @@ const getPoll = async (req, res) => {
 
                 // Run when DOM is loaded
                 document.addEventListener('DOMContentLoaded', createClickableElements)
-            </script>
+                
+                const endTime = new Date().getTime() + ${countdownMinutes} * 60 * 1000;
+
+                function updateTimer() {
+                    const now = new Date().getTime();
+                    const timeLeft = endTime - now;
+
+                    const timerDiv = document.getElementById("timer");
+
+                    if (timeLeft <= 0) {
+                    timerDiv.textContent = "00:00:00";
+                    clearInterval(timerInterval);
+                    return;
+                    }
+
+                    const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                    timerDiv.textContent =
+                    String(hours).padStart(2, "0") + ":" +
+                    String(minutes).padStart(2, "0") + ":" +
+                    String(seconds).padStart(2, "0");
+                }
+
+                const timerInterval = setInterval(updateTimer, 1000);
+                updateTimer(); // Call once immediately
+
+                </script>
             </html>
         `;
-        console.log(html);
         
         res.set('Content-Type', 'text/html');
         res.send(html);
