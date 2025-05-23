@@ -10,6 +10,7 @@ const { dbConnection } = require("./db")
 const questionsRoutes = require("./routes/questions.routes")
 const pollsRoutes = require("./routes/polls.routes")
 const resultsRoutes = require("./routes/results.routes")
+const ipRoutes = require("./routes/ip.routes")
 
 const main = () => {
   const app = express();
@@ -20,6 +21,7 @@ const main = () => {
   app.use("/questions", questionsRoutes)
   app.use("/polls", pollsRoutes)
   app.use("/results", resultsRoutes)
+  app.use("/get-ip", ipRoutes)
 
   dbConnection()
 
