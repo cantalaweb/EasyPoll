@@ -1,20 +1,30 @@
 const { Question } = require("../models/question.model");
-const express = require("express");
-const router = express.Router();
+const mongoose = require("mongoose")
 
 const createQuestion = async (req, res) => {
+    const id = new mongoose.Types.ObjectId()
     const question = req.body.question;
     const minsToVote = req.body.minsToVote;
     const options = req.body.options;
     try {
         const createdQuestion = new Question({
-            _id: new mongoose.Types.ObjectId(),
+            _id: id,
             question: question,
             minsToVote: minsToVote,
             options: options
         });
         await createdQuestion.save();
-        res.status(201).send("Question registered.");
+        
+        // Now send a POST request to /polls/:questionId to create a new poll
+        try {
+            fetch(`http://127.0.0.1:8000/polls/${id}`, {method: "POST"})
+            // .then((response) => console.log(`(${response.status}), Poll ${response.statusText}`))
+            .then(response => response.json())
+            .then(data => res.status(201).send(data))
+            .catch(error => console.log(error));
+        } catch (error) {
+            res.status(404).send(error);
+        }
     } catch (error) {
         res.status(404).send(error);
     }

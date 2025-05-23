@@ -1,17 +1,22 @@
-//A MODIFICAR TODO
-
 const { Poll } = require("../models/poll.model");
+const mongoose = require("mongoose")
+const ip = Object.values(require('os').networkInterfaces()).reduce((r, list) => r.concat(list.reduce((rr, i) => rr.concat(i.family==='IPv4' && !i.internal && i.address || []), [])), [])
+
 
 const createPoll = async (req, res) => {
+    const ip = Object.values(require('os').networkInterfaces()).reduce((r, list) => r.concat(list.reduce((rr, i) => rr.concat(i.family==='IPv4' && !i.internal && i.address || []), [])), [])
+    const id = new mongoose.Types.ObjectId()
     const questionId = req.params.questionId;
-    const dateNow = Date.now;
+    const dateNow = Date.now();
+    const url = `http://${ip[0]}:8000/polls/${id}`
     try {
         const createdPoll = new Poll({
-            questionId: questionId,
+            _id: id,
+            question: questionId,
             date: dateNow
         });
         await createdPoll.save();
-        res.status(201).send("Poll registered.");
+        res.status(201).send(`{ "url": "${url}" }`);
     } catch (error) {
         res.status(404).send(error);
     }

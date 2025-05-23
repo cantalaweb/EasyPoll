@@ -25,3 +25,14 @@
     justify-content: center;
     gap: 30px;
 }
+
+.thirdContainer{
+    display: flex;
+    flex-direction:row ;
+    justify-content: center;
+    gap: 30px;
+}
+
+.qr {
+  padding: 20px;
+}

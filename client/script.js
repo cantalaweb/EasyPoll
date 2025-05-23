@@ -2,7 +2,6 @@
 const BASEURL = 'http://127.0.0.1:8000'
 const createPollBtn = document.getElementById('createPollBtn');
 
-createPollBtn.addEventListener('click', createPoll)
 
 const createPoll = async () => {
     const questionText = document.getElementById('questionText');
@@ -28,15 +27,27 @@ const createPoll = async () => {
         }),
     })    
     try {
-        const newId = await response.json()
-        questionText.value = ""
+        const data = await response.json()
+        const qrcode = new QRCode(document.getElementById('qrcode'), {
+            text: data.url,
+            width: 256,
+            height: 256,
+            colorDark : '#000',
+            colorLight : '#fff',
+            correctLevel : QRCode.CorrectLevel.H
+        });
+
+/*      questionText.value = ""
         minsToVoteText.value = "2"
         option1.value = ""
         option2.value = ""
         option3.value = ""
         option4.value = ""
+ */
     } catch (error) {
         console.error(error);
         window.alert('Question could not be created.')
     }
 }
+
+createPollBtn.addEventListener('click', createPoll)
